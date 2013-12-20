@@ -219,8 +219,9 @@ class Example(QWidget):
         self.viewResultTable.item(self.row, 1).setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
 
-app = QApplication(sys.argv)
-ex = Example()
-ex.show()
-app.exec_()
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Example()
+    ex.show()
+    app.exec_()
 
