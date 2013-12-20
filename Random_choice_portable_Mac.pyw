@@ -14,6 +14,7 @@ class Example(QWidget):
         self.updatenamelist()
         self.create_connection()
         # print u"目前所選的名單是",
+        #似乎把 print 全都 comment 以後就可以無終端機執行了
         # print unicode(self.selectclass.currentText())
 
         current_class = unicode(self.selectclass.currentText())
@@ -51,6 +52,7 @@ class Example(QWidget):
 
         self.labelA = QLabel(u"班級")
         self.selectclass = QComboBox()
+        self.selectclass.setToolTip(u"中途切換班級會\n造成抽過的人還會被抽到\n就像是重新抽一樣")
 
         self.more = QToolButton()
         icon = QIcon()
