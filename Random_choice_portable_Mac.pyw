@@ -13,8 +13,8 @@ class Example(QWidget):
         self.createLayout()
         self.updatenamelist()
         self.create_connection()
-        print u"目前所選的名單是",
-        print unicode(self.selectclass.currentText())
+        # print u"目前所選的名單是",
+        # print unicode(self.selectclass.currentText())
 
         current_class = unicode(self.selectclass.currentText())
 
@@ -123,19 +123,19 @@ class Example(QWidget):
 
     def updatenamelist(self):
         cwd = os.getcwdu()
-        print cwd
+        # print cwd
         self.storelocation = os.path.join(cwd, "namelist")
         self.namelists = os.listdir(self.storelocation)
-        print u"現有名單：",
-        print self.namelists
+        # print u"現有名單：",
+        # print self.namelists
         self.selectclass.clear()
         self.selectclass.addItems(self.namelists)
 
     def makedic(self):
 
         current_class = unicode(self.selectclass.currentText())
-        print u"目前所選的名單是",
-        print current_class
+        # print u"目前所選的名單是",
+        # print current_class
 
         if current_class == '':
             pass
@@ -174,7 +174,7 @@ class Example(QWidget):
         m.exec_(QCursor.pos())
 
     def add_group(self):
-        print "編輯新名單"
+        # print "編輯新名單"
         from openfile import opf
         #雙視窗弄了半天，原來在變數前要加 self!!
         self.ma = opf()
