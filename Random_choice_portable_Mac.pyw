@@ -1,9 +1,14 @@
 #-*- coding: utf-8-*-
 __author__ = 'Aaron'
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
 import os
 import sys
+
+from PyQt4.QtCore import QString,Qt, SIGNAL
+from PyQt4.QtGui import QWidget, QMessageBox, QLabel, QSpinBox, QComboBox, \
+    QToolButton,QHBoxLayout, QVBoxLayout, QIcon, QPixmap, QPushButton,QKeySequence,\
+    QMenu, QTableWidgetItem, QTableWidget, QCursor, QAbstractItemView, QApplication
+
+
 
 
 class Example(QWidget):
