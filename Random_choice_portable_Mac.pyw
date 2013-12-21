@@ -127,6 +127,9 @@ class Example(QWidget):
         cwd = os.getcwdu()
         # print cwd
         self.storelocation = os.path.join(cwd, "namelist")
+        if os.path.isfile(os.path.join(cwd,'namelist','.DS_Store')):
+            os.unlink(os.path.join(cwd,'namelist','.DS_Store'))
+
         self.namelists = os.listdir(self.storelocation)
         # print u"現有名單：",
         # print self.namelists
