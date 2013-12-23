@@ -51,6 +51,7 @@ class Example(QWidget):
 
         self.labelA = QLabel(u"班級")
         self.selectclass = QComboBox()
+        self.selectclass.setToolTip(u"中途切換班級會\n造成抽過的人還會被抽到\n就像是重新抽一樣")
 
         self.more = QToolButton()
         icon = QIcon()
@@ -222,9 +223,8 @@ class Example(QWidget):
         self.viewResultTable.item(self.row, 1).setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Example()
-    ex.show()
-    app.exec_()
+app = QApplication(sys.argv)
+ex = Example()
+ex.show()
+app.exec_()
 

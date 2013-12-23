@@ -11,7 +11,8 @@ APP = ['Random_choice_portable_Mac.pyw']
 DATA_FILES = ['qt.conf','del.ui', 'delf.py', 'Delname.py', 'Flaticon_1430.png', 'icons', 'icons.qrc', 'namelist', 'openfile-bak.py', 'openfile.py', 'opf.py', 'opf.ui', 'Random_choice_portable_Mac.py', 'Random_choice_portable_Mac.pyw', 'README.md', 'scales.icns','icons/delete.png', 'icons/dice.png', 'icons/eraser.png', 'icons/fdelete.png', 'icons/gear.png', 'icons/import.png', 'icons/open.png','namelist/99']
 OPTIONS = {'argv_emulation': 0,
     'optimize': 2,
-    'includes': ['sip', 'PyQt4._qt', 'PyQt4.QtCore', 'PyQt4.QtGui'],
+    'includes': ['sip', 'PyQt4._qt', 'PyQt4', 'PyQt4.QtCore', 'PyQt4.QtGui'],
+    # 'includes': ['sip'],
     'excludes': ['PyQt4.QtDesigner', 'PyQt4.QtNetwork', 'PyQt4.QtOpenGL', 'PyQt4.QtScript', 'PyQt4.QtSql', 'PyQt4.QtTest', 'PyQt4.QtWebKit', 'PyQt4.QtXml', 'PyQt4.phonon']
     }
  

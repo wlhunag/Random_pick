@@ -39,7 +39,7 @@ class Example(QWidget):
                         row = row.split('\t')
                         self.whichClass[row[0]] = row[1]
                 except IndexError:
-                    QMessageBox.warning(self, u"名單有問題喔", u"名單有問題喔\n請刪掉此名單，再重新匯入名單吧~")
+                    QMessageBox.warning(self, u"名單有問題喔", u"%s名單有問題喔\n請刪掉此名單，再重新匯入名單吧~" % current_class)
             self.allnumber = self.whichClass.keys()
 
 
@@ -207,6 +207,10 @@ class Example(QWidget):
 
             self.update_tableview(self.whichClass, text)
             self.spinbox.setMaximum(len(self.allnumber))
+
+            if len(self.allnumber) == 0:
+                QMessageBox.warning(self, u"下面沒人了", u"都抽完了！下面沒人了！\n請重新啟動程式吧~")
+                break
 
             self.spinbox.setFocus(True)
             self.spinbox.setValue(1)

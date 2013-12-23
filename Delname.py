@@ -28,7 +28,7 @@ class delf(QtGui.QDialog,Ui_delform):
     def start(self):
         model = QtGui.QStandardItemModel(self.listView)
         cwd = os.getcwdu()
-        print cwd
+        # print cwd
         self.storelocation = os.path.join(cwd,"namelist")
         fs = os.listdir(self.storelocation)
         for f in fs:

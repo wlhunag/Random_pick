@@ -33,8 +33,8 @@ class opf(QtGui.QDialog,Ui_openfd):
             newl = os.path.join(cwd,"namelist",fn)
 
             with open(newl,'w') as fh:
-                print(u"新名單內容為"),
-                print(unicode(self.plainTextEdit.toPlainText()))
+            #    print(u"新名單內容為"),
+             #   print(unicode(self.plainTextEdit.toPlainText()))
                 fh.write(unicode(self.plainTextEdit.toPlainText()).encode('utf-8').lstrip("\n").rstrip("\n"))
             QtGui.QMessageBox.information(None, u"成功",
                             u"名單匯入成功，\n請重新啟動程式",
