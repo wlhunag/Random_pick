@@ -26,7 +26,7 @@ Random_pick
 主程式為 Random_choice_portable_Mac.pyw
 
 
-匯入名單的格式為學號 + <tab> + 姓名
+匯入名單的格式為學號 + tab + 姓名
 
 直接從 excel 檔案貼上就是這種格式
 
