@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>376</width>
-    <height>351</height>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>匯入班級名單</string>
+   <string>匯入名單</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -42,17 +42,17 @@
     <item>
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>班級名稱</string>
+       <string>名稱</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="lineEdit">
       <property name="toolTip">
-       <string>輸入的名稱將作為主程式中的班級名稱</string>
+       <string>輸入的名稱將作為主程式中的名單名稱</string>
       </property>
       <property name="placeholderText">
-       <string>存檔前請輸入班級名稱</string>
+       <string>存檔前請先指定名稱</string>
       </property>
      </widget>
     </item>
@@ -88,9 +88,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>50</y>
+     <y>90</y>
      <width>201</width>
-     <height>291</height>
+     <height>251</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -104,27 +104,43 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>20</y>
+     <y>50</y>
      <width>201</width>
      <height>31</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLineEdit" name="lineEdit_number">
       <property name="text">
        <string>學號</string>
+      </property>
+      <property name="placeholderText">
+       <string>預設為學號</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLineEdit" name="lineEdit_name">
       <property name="text">
        <string>姓名</string>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>請輸入本名單的欄位標題</string>
+   </property>
   </widget>
  </widget>
  <resources/>

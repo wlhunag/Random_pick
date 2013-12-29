@@ -3,12 +3,10 @@ __author__ = 'Aaron'
 import os
 import sys
 
-from PyQt4.QtCore import QString,Qt, SIGNAL
+from PyQt4.QtCore import QString, Qt, SIGNAL
 from PyQt4.QtGui import QWidget, QMessageBox, QLabel, QSpinBox, QComboBox, \
-    QToolButton,QHBoxLayout, QVBoxLayout, QIcon, QPixmap, QPushButton,QKeySequence,\
+    QToolButton, QHBoxLayout, QVBoxLayout, QIcon, QPixmap, QPushButton, QKeySequence, \
     QMenu, QTableWidgetItem, QTableWidget, QCursor, QAbstractItemView, QApplication
-
-
 
 
 class Example(QWidget):
@@ -32,6 +30,8 @@ class Example(QWidget):
             fileLocation = os.path.join(os.getcwdu(), "namelist", current_class)
             self.whichClass = dict()
             with open(fileLocation, mode='r') as infile:
+                #讀取第一行，當作欄位名稱，再將其餘當作資料內容
+                self.title = infile.readline().lstrip("\n").rstrip("\n").decode('utf-8').split('\t')
                 self.content = infile.read().lstrip("\n").rstrip("\n").decode('utf-8')
                 self.content = self.content.split('\n')
                 try:
@@ -39,8 +39,15 @@ class Example(QWidget):
                         row = row.split('\t')
                         self.whichClass[row[0]] = row[1]
                 except IndexError:
-                    QMessageBox.warning(self, u"名單有問題喔", u"%s名單有問題喔\n請刪掉此名單，再重新匯入名單吧~" % current_class)
+                    QMessageBox.warning(self, u"名單有問題喔", u"'%s'名單有問題喔\n請重新啟動程式，再次匯入名單吧~" % current_class)
+                    cwd = os.getcwdu()
+                    infile.close()
+                    if os.path.isfile(os.path.join(cwd, 'namelist', current_class)):
+                        os.unlink(os.path.join(cwd, 'namelist', current_class))
+                        sys.exit(0)
+
             self.allnumber = self.whichClass.keys()
+        self.makedic()
 
 
     def createLayout(self):
@@ -102,7 +109,8 @@ class Example(QWidget):
         self.viewResultTable.setColumnWidth(0, 130)
         self.viewResultTable.setColumnWidth(1, 123)
 
-        self.viewResultTable.setHorizontalHeaderLabels((u'學號', u'姓名'))
+        self.viewResultTable.horizontalHeader().setToolTip(u"欄位標題根據匯入名單時的設定")
+
         self.viewResultTable.verticalHeader().hide()
         self.viewResultTable.setShowGrid(False)
         h3 = QVBoxLayout()
@@ -132,8 +140,8 @@ class Example(QWidget):
         cwd = os.getcwdu()
         # print cwd
         self.storelocation = os.path.join(cwd, "namelist")
-        if os.path.isfile(os.path.join(cwd,'namelist','.DS_Store')):
-            os.unlink(os.path.join(cwd,'namelist','.DS_Store'))
+        if os.path.isfile(os.path.join(cwd, 'namelist', '.DS_Store')):
+            os.unlink(os.path.join(cwd, 'namelist', '.DS_Store'))
 
         self.namelists = os.listdir(self.storelocation)
         # print u"現有名單：",
@@ -154,6 +162,9 @@ class Example(QWidget):
             self.whichClass = dict()
             try:
                 with open(fileLocation, mode='r') as infile:
+                #讀取第一行，當作欄位名稱，再將其餘當作資料內容
+                    self.title = infile.readline().lstrip("\n").rstrip("\n").decode('utf-8').split('\t')
+
                     self.content = infile.read().lstrip("\n").rstrip("\n").decode('utf-8')
                     self.content = self.content.split('\n')
                     for row in self.content:
@@ -162,10 +173,13 @@ class Example(QWidget):
                 self.allnumber = self.whichClass.keys()
             except IOError as e:
                 QMessageBox.warning(self, u"沒有這個名單喔", u"沒有這個名單喔！\n你應該是剛剛把它刪掉了\n請重新啟動程式吧~")
+            except IndexError:
+                QMessageBox.warning(self, u"名單格式不對喔", u"名單格式不對喔！\n記得要用tab鍵分隔姓名和學號喔\n請重新啟動程式吧~")
+                os.unlink(fileLocation)
 
         self.spinbox.setMaximum(len(self.allnumber))
         self.spinbox.setValue(1)
-
+        self.viewResultTable.setHorizontalHeaderLabels(self.title)
 
 
     def moreac(self):
@@ -191,6 +205,7 @@ class Example(QWidget):
 
     def rem_group(self):
         from Delname import delf
+
         self.mr = delf()
 
     def random_choice(self, numbers):
@@ -217,7 +232,7 @@ class Example(QWidget):
 
     def del_old_table(self):
 
-        for i in reversed(range(self.row+1)):
+        for i in reversed(range(self.row + 1)):
             self.viewResultTable.removeRow(i)
 
     def update_tableview(self, whichClass, text):
