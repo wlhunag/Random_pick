@@ -1,7 +1,9 @@
 #-*- coding: utf-8-*-
 __author__ = 'Aaron'
-from cx_Freeze import setup, Executable
 import sys
+
+from cx_Freeze import setup, Executable
+
 
 if sys.platform == "win32":
     base = "Win32GUI"
@@ -15,10 +17,9 @@ includefiles = ['qt.conf', 'delf.pyc', 'Delname.pyc', 'Flaticon_1430.png', 'icon
 #記得要加上C:\Python27\Lib\site-packages\PyQt4\plugins\imageformats 這個資料夾
 includes = ['sip', 'PyQt4.QtCore']
 
-
 setup(
-        name = "Random_Choice_CustomName",
-        version = "0.9",
-        description = u"亂數抽籤程式",
-        options = {'build_exe': {'include_files':includefiles}},
-        executables = [Executable("Random_choice_portable_Mac.pyw" ,base = base, icon = "Flaticon_1430.ico")])
+    name="Random_Choice_CustomName",
+    version="0.9",
+    description=u"亂數抽籤程式",
+    options={'build_exe': {'include_files': includefiles}},
+    executables=[Executable("Random_choice_portable_Mac.pyw", base=base, icon="Flaticon_1430.ico")])
