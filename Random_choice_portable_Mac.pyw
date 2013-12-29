@@ -125,7 +125,7 @@ class Example(QWidget):
         layout.addLayout(h4)
         self.setLayout(layout)
         self.setWindowTitle(u"抽抽樂")
-        self.setWindowIcon(QIcon("Flaticon_1430.png"))
+        self.setWindowIcon(QIcon("icons/Flaticon_1430.png"))
 
 
     def create_connection(self):
