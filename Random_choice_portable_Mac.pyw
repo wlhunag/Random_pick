@@ -3,7 +3,7 @@ __author__ = 'Aaron'
 import os
 import sys
 
-from PyQt4.QtCore import QString, Qt, SIGNAL
+from PyQt4.QtCore import Qt, SIGNAL
 from PyQt4.QtGui import QWidget, QMessageBox, QLabel, QSpinBox, QComboBox, \
     QToolButton, QHBoxLayout, QVBoxLayout, QIcon, QPixmap, QPushButton, QKeySequence, \
     QMenu, QTableWidgetItem, QTableWidget, QCursor, QAbstractItemView, QApplication
