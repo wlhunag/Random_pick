@@ -13,6 +13,7 @@ Random_pick
 
 
 ![github](https://github.com/wlhunag/Random_pick/raw/win/icons/Random-Demo.png "亂數主畫面")
+
 ![github](https://github.com/wlhunag/Random_pick/raw/win/icons/import_Demo.png "匯入畫面")
 
 安裝：
