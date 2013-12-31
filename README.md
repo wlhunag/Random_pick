@@ -12,6 +12,9 @@ Random_pick
 現在寫成小程式
 
 
+![github](https://github.com/wlhunag/Random_pick/raw/win/icons/Random-Demo.png "亂數主畫面")
+![github](https://github.com/wlhunag/Random_pick/raw/win/icons/import_Demo.png "匯入畫面")
+
 安裝：
 ---
 -----------------------------------
