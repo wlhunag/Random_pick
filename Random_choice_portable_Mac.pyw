@@ -222,9 +222,10 @@ class Example(QWidget):
                 QMessageBox.warning(self, u"下面沒人了", u"都抽完了！\n請重新啟動程式吧~")
 
             #增加TTS功能
-            speaker = win32com.client.Dispatch('SAPI.SpVoice')
+            #如何異步speak？
+            speaker = win32com.client.Dispatch('SAPI.SpVoice', 1)
 
-            speaker.Speak(u"中獎的是，{0}!".format(self.whichClass[text]))
+            speaker.Speak(u"中獎的是，{0}!".format(self.whichClass[text]), 0)
 
             self.update_tableview(self.whichClass, text)
             self.spinbox.setMaximum(len(self.allnumber))
