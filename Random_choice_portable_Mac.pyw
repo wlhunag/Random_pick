@@ -2,7 +2,7 @@
 __author__ = 'Aaron'
 import os
 import sys
-import win32com.client
+# import win32com.client
 
 from PyQt4.QtCore import Qt, SIGNAL
 from PyQt4.QtGui import QWidget, QMessageBox, QLabel, QSpinBox, QComboBox, \
@@ -223,9 +223,9 @@ class Example(QWidget):
 
             #增加TTS功能
             #如何異步speak？
-            speaker = win32com.client.Dispatch('SAPI.SpVoice', 1)
+            # speaker = win32com.client.Dispatch('SAPI.SpVoice', 1)
 
-            speaker.Speak(u"中獎的是，{0}!".format(self.whichClass[text]), 0)
+            # speaker.Speak(u"中獎的是，{0}!".format(self.whichClass[text]), 0)
 
             self.update_tableview(self.whichClass, text)
             self.spinbox.setMaximum(len(self.allnumber))
