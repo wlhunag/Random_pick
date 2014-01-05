@@ -8,7 +8,7 @@ Usage:
 from setuptools import setup
 
 APP = ['Random_choice_portable_Mac.pyw']
-DATA_FILES = ['qt.conf','del.ui', 'delf.py', 'Delname.py', 'Flaticon_1430.png', 'icons', 'icons.qrc', 'namelist', 'openfile-bak.py', 'openfile.py', 'opf.py', 'opf.ui', 'Random_choice_portable_Mac.py', 'Random_choice_portable_Mac.pyw', 'README.md', 'scales.icns','icons/delete.png', 'icons/dice.png', 'icons/eraser.png', 'icons/fdelete.png', 'icons/gear.png', 'icons/import.png', 'icons/open.png','namelist/99']
+DATA_FILES = ['qt.conf', 'delf.py', 'Delname.py', 'icons',  'namelist','scales.icns']
 OPTIONS = {'argv_emulation': 0,
     'optimize': 2,
     'includes': ['sip', 'PyQt4._qt', 'PyQt4', 'PyQt4.QtCore', 'PyQt4.QtGui'],
