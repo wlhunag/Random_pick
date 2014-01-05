@@ -19,7 +19,6 @@ class Example(QWidget):
         self.create_connection()
         # print u"目前所選的名單是",
         #似乎把 print 全都 comment 以後就可以無終端機執行了
-        # print unicode(self.selectclass.currentText())
 
         current_class = unicode(self.selectclass.currentText())
 
