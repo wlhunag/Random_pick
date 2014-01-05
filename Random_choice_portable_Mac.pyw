@@ -2,7 +2,6 @@
 __author__ = 'Aaron'
 import os
 import sys
-# import win32com.client
 
 from PyQt4.QtCore import Qt, SIGNAL
 from PyQt4.QtGui import QWidget, QMessageBox, QLabel, QSpinBox, QComboBox, \
@@ -220,11 +219,6 @@ class Example(QWidget):
             except IndexError:
                 QMessageBox.warning(self, u"下面沒人了", u"都抽完了！\n請重新啟動程式吧~")
 
-            #增加TTS功能
-            #如何異步speak？
-            # speaker = win32com.client.Dispatch('SAPI.SpVoice', 1)
-
-            # speaker.Speak(u"中獎的是，{0}!".format(self.whichClass[text]), 0)
 
             self.update_tableview(self.whichClass, text)
             self.spinbox.setMaximum(len(self.allnumber))
