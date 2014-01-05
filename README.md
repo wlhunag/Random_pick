@@ -20,7 +20,13 @@ Random_pick
 ---
 -----------------------------------
 
+##  Windows
+  
 除了安裝 Python 以外，還要安裝PyQt4 
+
+##  Mac
+  
+需要從python 官方網站安裝python，然後再安裝 PyQtX
 
 
 使用：
