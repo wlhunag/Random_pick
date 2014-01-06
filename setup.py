@@ -8,10 +8,10 @@ Usage:
 from setuptools import setup
 
 APP = ['Random_choice_portable_Mac.pyw']
-DATA_FILES = ['qt.conf', 'delf.py', 'Delname.py', 'icons',  'namelist','scales.icns']
+DATA_FILES = ['qt.conf', 'icons',  'namelist','scales.icns']
 OPTIONS = {'argv_emulation': 0,
     'optimize': 2,
-    'includes': ['sip', 'PyQt4._qt', 'PyQt4', 'PyQt4.QtCore', 'PyQt4.QtGui'],
+    'includes': ['sip', 'PyQt4._qt', 'PyQt4.QtCore', 'PyQt4.QtGui'],
     # 'includes': ['sip'],
     'excludes': ['PyQt4.QtDesigner', 'PyQt4.QtNetwork', 'PyQt4.QtOpenGL', 'PyQt4.QtScript', 'PyQt4.QtSql', 'PyQt4.QtTest', 'PyQt4.QtWebKit', 'PyQt4.QtXml', 'PyQt4.phonon']
     }
