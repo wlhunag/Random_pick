@@ -4,7 +4,7 @@ import sys
 
 from cx_Freeze import setup, Executable
 
-
+base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 
@@ -14,10 +14,10 @@ includefiles = ['qt.conf', 'delf.pyc', 'Delname.pyc', 'icons', 'namelist',
                 'openfile.pyc', 'opf.pyc', 'scales.icns', ]
 #記得要加上C:\Python27\Lib\site-packages\PyQt4\plugins\imageformats 這個資料夾
 includes = ['sip', 'PyQt4.QtCore']
-
+excludes= ['QtDesigner','PyQt4.QtDesigner', 'PyQt4.QtNetwork', 'PyQt4.QtOpenGL', 'PyQt4.QtScript', 'PyQt4.QtSql', 'PyQt4.QtTest', 'PyQt4.QtWebKit', 'PyQt4.QtXml', 'PyQt4.phonon']
 setup(
     name="Random_Choice_CustomName",
     version="1.0",
     description=u"自訂名單亂數抽籤程式",
-    options={'build_exe': {'include_files': includefiles}},
-    executables=[Executable("Random_choice_portable_Mac.pyw", base=base, icon="Flaticon_1430.ico")])
+    options={'build_exe': {'excludes':excludes,'include_files': includefiles}},
+    executables=[Executable("Random_choice_portable_Mac.pyw", base=base, icon="scales.icns")])
