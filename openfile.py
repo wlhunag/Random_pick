@@ -17,13 +17,13 @@ class opf(QtGui.QDialog,Ui_openfd):
         self.buttonBox.accepted.connect(self.savef)
 
     def cunt(self):
-        self.text = unicode(self.plainTextEdit.toPlainText()).encode('utf-8').lstrip("\n").rstrip("\n")
+        self.text = self.plainTextEdit.toPlainText().lstrip("\n").rstrip("\n")
         num =  self.text.count('\n') + 1
         self.label_2.setText(str(num))
 
     def savef(self):
-        cwd = os.getcwdu()
-        fn = unicode(self.lineEdit.text())
+        cwd = os.getcwd()
+        fn = self.lineEdit.text()
         if fn == u'':
             QtGui.QMessageBox.critical(None, u"沒檔名",
                             u"存檔前請輸入檔名",
@@ -32,11 +32,11 @@ class opf(QtGui.QDialog,Ui_openfd):
         else:
             newl = os.path.join(cwd,"namelist",fn)
 
-            with open(newl,'w') as fh:
+            with open(newl,'w',encoding='utf-8') as fh:
             #    print(u"新名單內容為"),
              #   print(unicode(self.plainTextEdit.toPlainText()))
-                fh.write(unicode(self.lineEdit_number.text()).encode('utf-8') + '\t' + unicode(self.lineEdit_name.text()).encode('utf-8') + '\n')
-                fh.write(unicode(self.plainTextEdit.toPlainText()).encode('utf-8').lstrip("\n").rstrip("\n"))
+                fh.write(self.lineEdit_number.text() + '\t' + self.lineEdit_name.text() + '\n')
+                fh.write(self.plainTextEdit.toPlainText().lstrip("\n").rstrip("\n"))
             QtGui.QMessageBox.information(None, u"成功",
                             u"名單匯入成功，\n請重新啟動程式",
                             QtGui.QMessageBox.Ok | QtGui.QMessageBox.Default,

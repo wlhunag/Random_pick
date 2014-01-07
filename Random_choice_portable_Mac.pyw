@@ -19,19 +19,19 @@ class Example(QWidget):
         # print u"目前所選的名單是",
         #似乎把 print 全都 comment 以後就可以無終端機執行了
 
-        current_class = unicode(self.selectclass.currentText())
+        current_class = self.selectclass.currentText()
 
         if current_class == "":
             QMessageBox.warning(self, u"沒有名單喔", u"沒有名單喔\n抽籤以前！\n請新增名單吧~")
             self.add_group()
 
         else:
-            fileLocation = os.path.join(os.getcwdu(), "namelist", current_class)
+            fileLocation = os.path.join(os.getcwd(), "namelist", current_class)
             self.whichClass = dict()
-            with open(fileLocation, mode='r') as infile:
+            with open(fileLocation, mode='r',encoding = 'utf-8') as infile:
                 #讀取第一行，當作欄位名稱，再將其餘當作資料內容
-                self.title = infile.readline().lstrip("\n").rstrip("\n").decode('utf-8').split('\t')
-                self.content = infile.read().lstrip("\n").rstrip("\n").decode('utf-8')
+                self.title = infile.readline().lstrip("\n").rstrip("\n").split('\t')
+                self.content = infile.read().lstrip("\n").rstrip("\n")
                 self.content = self.content.split('\n')
                 try:
                     for row in self.content:
@@ -45,7 +45,7 @@ class Example(QWidget):
                         os.unlink(os.path.join(cwd, 'namelist', current_class))
                         sys.exit(0)
 
-            self.allnumber = self.whichClass.keys()
+            self.allnumber = list(self.whichClass.keys())
         self.makedic()
 
 
@@ -136,7 +136,7 @@ class Example(QWidget):
 
 
     def updatenamelist(self):
-        cwd = os.getcwdu()
+        cwd = os.getcwd()
         # print cwd
         self.storelocation = os.path.join(cwd, "namelist")
         if os.path.isfile(os.path.join(cwd, 'namelist', '.DS_Store')):
@@ -150,26 +150,26 @@ class Example(QWidget):
 
     def makedic(self):
 
-        current_class = unicode(self.selectclass.currentText())
+        current_class = self.selectclass.currentText()
         # print u"目前所選的名單是",
         # print current_class
 
         if current_class == '':
             pass
         else:
-            fileLocation = os.path.join(os.getcwdu(), "namelist", current_class)
+            fileLocation = os.path.join(os.getcwd(), "namelist", current_class)
             self.whichClass = dict()
             try:
-                with open(fileLocation, mode='r') as infile:
+                with open(fileLocation, mode='r',encoding='utf-8') as infile:
                 #讀取第一行，當作欄位名稱，再將其餘當作資料內容
-                    self.title = infile.readline().lstrip("\n").rstrip("\n").decode('utf-8').split('\t')
+                    self.title = infile.readline().lstrip("\n").rstrip("\n").split('\t')
 
-                    self.content = infile.read().lstrip("\n").rstrip("\n").decode('utf-8')
+                    self.content = infile.read().lstrip("\n").rstrip("\n")
                     self.content = self.content.split('\n')
                     for row in self.content:
                         row = row.split('\t')
                         self.whichClass[row[0]] = row[1]
-                self.allnumber = self.whichClass.keys()
+                self.allnumber = list(self.whichClass.keys())
             except IOError as e:
                 QMessageBox.warning(self, u"沒有這個名單喔", u"沒有這個名單喔！\n你應該是剛剛把它刪掉了\n請重新啟動程式吧~")
             except IndexError:

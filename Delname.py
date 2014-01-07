@@ -27,7 +27,7 @@ class delf(QtGui.QDialog,Ui_delform):
 
     def start(self):
         model = QtGui.QStandardItemModel(self.listView)
-        cwd = os.getcwdu()
+        cwd = os.getcwd()
         # print cwd
         self.storelocation = os.path.join(cwd,"namelist")
         fs = os.listdir(self.storelocation)
@@ -39,7 +39,7 @@ class delf(QtGui.QDialog,Ui_delform):
 
     def delaction(self):
         for index in self.listView.selectedIndexes():
-            a =  unicode(index.data().toString())
+            a =  index.data()
         import os
         rmf = os.path.join(self.storelocation,a)
         os.remove(rmf)
